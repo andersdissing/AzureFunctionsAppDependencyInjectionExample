@@ -7,7 +7,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using AzureFunctionsAppDependencyInjectionExample;
+using AzureFunctionsAppDependencyInjectionExample2;
 using Microsoft.Azure.WebJobs.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,13 +19,13 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 // Configure the start up class
 [assembly: WebJobsStartup(typeof(CustomWebJobsStartup))]
 
-namespace AzureFunctionsAppDependencyInjectionExample
+namespace AzureFunctionsAppDependencyInjectionExample2
 {
-    public static class DependencyInjectionExampleFunction
+    public static class DependencyInjectionExampleFunction2
     {
-        [FunctionName("DIExample")]
+        [FunctionName("DIExample2")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "DIExample/{number}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "DIExample2/{number}")] HttpRequest req,
             int number,
             [Config] IConfiguration config,
             [DataRepository] IDataRepository data,
