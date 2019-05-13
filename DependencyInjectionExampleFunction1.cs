@@ -15,9 +15,10 @@ using Microsoft.Azure.WebJobs.Host.Config;
 using Microsoft.Azure.WebJobs.Description;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 
 // Configure the start up class
-[assembly: WebJobsStartup(typeof(CustomWebJobsStartup))]
+[assembly: FunctionsStartup(typeof(CustomWebJobsStartup))]
 
 namespace AzureFunctionsAppDependencyInjectionExample1
 {
@@ -39,9 +40,9 @@ namespace AzureFunctionsAppDependencyInjectionExample1
         }
     }
 
-    public class CustomWebJobsStartup : IWebJobsStartup
+    public class CustomWebJobsStartup : FunctionsStartup
     {
-        public void Configure(IWebJobsBuilder builder)
+        public override void Configure(IFunctionsHostBuilder builder)
         {
             // example on load configuration e.g. connection string etc.
             var config = new ConfigurationBuilder()
